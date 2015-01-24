@@ -23,6 +23,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
 import android.view.Window;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -124,15 +125,15 @@ public class LoginActivity extends FragmentActivity {
     private String buildUserInfoDisplay(GraphUser user) {
         StringBuilder userInfo = new StringBuilder("");
 
-        sUserName = String.format("Name: %s\n\n", user.getName());
+        sUserName = user.getName().toString();
         userInfo.append(sUserName);
         Log.d("facebook", sUserName);
 
-        sUserID = String.format("Id: %s\n\n", user.getId());
+        sUserID = user.getId().toString();
         userInfo.append(sUserID);
         Log.d("facebook", sUserID);
 
-        sUserLanguage = String.format("Locale: %s\n\n", user.getProperty("locale"));
+        sUserLanguage = user.getProperty("locale").toString();
         userInfo.append(sUserLanguage);
         Log.d("facebook", sUserLanguage);
 
@@ -173,7 +174,7 @@ public class LoginActivity extends FragmentActivity {
                                     // Display the parsed user info
                                     Log.d("facebook", buildUserInfoDisplay(user));
                                     showFragment(SELECTION, false);
-                                    ((SelectionFragment)fragments[SELECTION]).setUserInformation(sUserID,sUserName,sUserLanguage);
+                                    ((SelectionFragment)fragments[SELECTION]).setUserInformation(sUserID, sUserName, sUserLanguage);
                                 }
                             }
                         }
@@ -292,7 +293,12 @@ public class LoginActivity extends FragmentActivity {
         public SelectionFragment() {
         }
 
-        private TextView userInfoTextView;
+        private EditText etName;
+        private EditText etEmail;
+        private EditText etNumber;
+        private EditText etTelDay;
+        private EditText etTelNight;
+        private EditText etCell;
 
         @Override
         public View onCreateView(LayoutInflater inflater,
@@ -320,7 +326,13 @@ public class LoginActivity extends FragmentActivity {
             authButton.setFragment(this);
             authButton.setReadPermissions(Arrays.asList("user_location", "user_birthday", "user_likes"));
 
-            userInfoTextView = (TextView) view.findViewById(R.id.userInfoTextView);
+            etName = (EditText) view.findViewById(R.id.editTextUserName);
+            etEmail = (EditText) view.findViewById(R.id.editTextUserEmail);
+            etNumber = (EditText) view.findViewById(R.id.editTextNumber);
+//            etTelDay = (EditText) view.findViewById(R.id.editTextTelDay);
+//            etTelNight = (EditText) view.findViewById(R.id.editTextTelNight);
+            etCell = (EditText) view.findViewById(R.id.editTextCell);
+
             return view;
 
 //            LinearLayout llFull = new LinearLayout(getActivity());
@@ -339,7 +351,7 @@ public class LoginActivity extends FragmentActivity {
         }
 
         public void setUserInformation (String sUserId, String sUserName, String sUserLanguage) {
-            userInfoTextView.setText(sUserId);
+            etName.setText(sUserName);
         }
     }
 
