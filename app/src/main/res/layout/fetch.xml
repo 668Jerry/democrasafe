@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.facebook.widget.LoginButton
+        android:id="@+id/authButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        />
+
+    <!--<TextView-->
+        <!--android:id="@+id/userInfoTextView"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_marginLeft="20dp"-->
+        <!--android:layout_marginTop="20dp"-->
+        <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+        <!--android:visibility="invisible"-->
+        <!--android:text="abcdef"/>-->
+
+    <TextView
+        android:id="@+id/userInfoTextView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text1"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:lines="2"
+        android:clickable="true"
+        android:text="Another TextView"
+        android:autoLink="all"
+        android:fontFamily="Arial"
+        android:typeface="serif"
+        android:textSize="20sp" />
+
+</LinearLayout>
